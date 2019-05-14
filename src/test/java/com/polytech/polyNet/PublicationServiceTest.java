@@ -2,17 +2,25 @@ package com.polytech.polyNet;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
 
 public class PublicationServiceTest {
+
+
     @Test
     public void should_save_story() {
+        ApplicationContext context = SpringApplication.run(AppConfig.class);
+
         //GIVEN
-        StoryRepository storyRepository = new InMemoryStoryRepository();
-        PublicationService publicationService = new PublicationServiceImpl(storyRepository);
+        StoryRepository storyRepository = context.getBean(StoryRepository.class);
+        PublicationService publicationService = context.getBean(PublicationService.class);
+
+
         Story story1 = new Story("Hello PSG");
         Story story2 = new Story("Hello OM");
         //WHEN
