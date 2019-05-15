@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Polynet">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +41,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">PolyNet</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -55,28 +55,22 @@
 
 <div class="container">
 
-    <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
-            mostly barebones HTML document.</p>
-
+    <div class="starter-template" ng-controller="MainController">
         <form action="" method="post" role="form">
-            <legend>Form Title</legend>
 
             <div class="form-group">
                 <label for=""></label>
-                <input type="text" class="form-control" name="" id="" placeholder="Input...">
+                <textarea  ng-model="story" class="form-control" name="" id="" placeholder="Create a post"></textarea>
             </div>
 
-            
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div align="right">
+                <button type="button" class="btn btn-primary" ng-click="share()">Share</button>
+            </div>
         </form>
 
-        <ul class="list-group">
-            <li class="list-group-item">STORY1</li>
-            <li class="list-group-item">STORY2</li>
-            <li class="list-group-item">STORY3</li>
+        <ul class="list-group" ng-repeat="story in stories">
+            <li class="list-group-item">{{story.content}}</li>
         </ul>
 
     </div>
@@ -88,5 +82,22 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<script>
+    angular.module('Polynet', []).controller('MainController', function ($scope, $http) {
+            $http.get('/feed').then(function (response) {
+                $scope.stories = response.data;
+            });
+
+            $scope.share = function () {
+                $http.post('/story', $scope.story).then(function () {
+                    $scope.stories.unshift({content: $scope.story});
+                    $scope.story = '';
+                })
+            }
+        }
+    );
+
+</script>
 </body>
 </html>

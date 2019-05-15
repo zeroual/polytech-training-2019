@@ -24,6 +24,12 @@ public class AppConfig {
         return dataSource;
     }
 
+
+    @Bean
+    FeedService feedService(){
+        return new FeedServiceImpl(storyRepository());
+    }
+
     @Bean
     PublicationService publicationService() {
         return new PublicationServiceImpl(storyRepository());
