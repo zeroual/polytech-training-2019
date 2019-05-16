@@ -1,4 +1,7 @@
-package com.polytech.polyNet;
+package com.polytech.polyNet.repository;
+
+import com.polytech.polyNet.business.Story;
+import com.polytech.polyNet.repository.StoryRepository;
 
 import java.util.ArrayList;
 import java.util.List;

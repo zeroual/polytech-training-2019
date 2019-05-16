@@ -1,5 +1,8 @@
-package com.polytech.polyNet;
+package com.polytech.polyNet.api;
 
+import com.polytech.polyNet.business.FeedService;
+import com.polytech.polyNet.business.PublicationService;
+import com.polytech.polyNet.business.Story;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

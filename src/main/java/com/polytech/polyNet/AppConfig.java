@@ -1,6 +1,12 @@
 package com.polytech.polyNet;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import com.polytech.polyNet.business.FeedService;
+import com.polytech.polyNet.business.FeedServiceImpl;
+import com.polytech.polyNet.business.PublicationService;
+import com.polytech.polyNet.business.PublicationServiceImpl;
+import com.polytech.polyNet.repository.JdbcStoryRepository;
+import com.polytech.polyNet.repository.StoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,7 +29,6 @@ public class AppConfig {
         dataSource.setDatabaseName("polyNet");
         return dataSource;
     }
-
 
     @Bean
     FeedService feedService(){
