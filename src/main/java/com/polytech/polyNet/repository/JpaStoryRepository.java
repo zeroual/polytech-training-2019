@@ -4,8 +4,11 @@ import com.polytech.polyNet.business.Story;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 public class JpaStoryRepository implements StoryRepository {
 
     @PersistenceContext
@@ -13,7 +16,8 @@ public class JpaStoryRepository implements StoryRepository {
 
     @Override
     public List<Story> findAll() {
-        return null;
+        Query query = entityManager.createQuery("SELECT s FROM Story s");
+        return query.getResultList();
     }
 
     @Override

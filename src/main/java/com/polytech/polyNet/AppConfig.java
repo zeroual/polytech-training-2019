@@ -26,7 +26,6 @@ public class AppConfig {
         dataSource.setURL("jdbc:mysql://localhost:3306/polyNet");
         dataSource.setUser("root");
         dataSource.setPassword("root");
-        dataSource.setDatabaseName("polyNet");
         return dataSource;
     }
 

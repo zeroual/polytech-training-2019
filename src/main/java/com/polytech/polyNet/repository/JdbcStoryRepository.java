@@ -26,7 +26,7 @@ public class JdbcStoryRepository implements StoryRepository {
         try {
             //GET CONNECTION
             Connection connection = dataSource.getConnection();
-            String sql = "SELECT * FROM STORY";
+            String sql = "SELECT * FROM story";
             //EXECUTE QUERY
             ResultSet resultSet = connection.createStatement().executeQuery(sql);
 
@@ -51,7 +51,7 @@ public class JdbcStoryRepository implements StoryRepository {
         try {
             //GET CONNECTION
             Connection connection = dataSource.getConnection();
-            String sql = "INSERT INTO STORY(CONTENT) VALUES('" + story.getContent() + "')";
+            String sql = "INSERT INTO story(CONTENT) VALUES('" + story.getContent() + "')";
             //EXECUTE QUERY
             connection.createStatement().execute(sql);
 
