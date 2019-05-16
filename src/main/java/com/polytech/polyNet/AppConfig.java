@@ -5,7 +5,7 @@ import com.polytech.polyNet.business.FeedService;
 import com.polytech.polyNet.business.FeedServiceImpl;
 import com.polytech.polyNet.business.PublicationService;
 import com.polytech.polyNet.business.PublicationServiceImpl;
-import com.polytech.polyNet.repository.JdbcStoryRepository;
+import com.polytech.polyNet.repository.JpaStoryRepository;
 import com.polytech.polyNet.repository.StoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class AppConfig {
 
     @Bean
     StoryRepository storyRepository() {
-        return new JdbcStoryRepository(datasource());
+        return new JpaStoryRepository();
     }
 
     @Bean
@@ -31,7 +31,7 @@ public class AppConfig {
     }
 
     @Bean
-    FeedService feedService(){
+    FeedService feedService() {
         return new FeedServiceImpl(storyRepository());
     }
 

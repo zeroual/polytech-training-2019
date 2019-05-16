@@ -1,6 +1,14 @@
 package com.polytech.polyNet.business;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "STORY")
 public class Story {
+
+    @Column(name = "CONTENT")
     private String content;
 
     public Story(String content) {
