@@ -4,8 +4,10 @@ import com.polytech.polyNet.business.FeedService;
 import com.polytech.polyNet.business.PublicationService;
 import com.polytech.polyNet.business.Story;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -24,7 +26,8 @@ public class StoryController {
     }
 
     @GetMapping("/feed")
-    public List<Story> feed() {
+    public List<Story> feed(Principal principal) {
+        String username = principal.getName();
         return feedService.fetchAll();
     }
 
