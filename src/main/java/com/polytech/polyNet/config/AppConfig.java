@@ -1,4 +1,4 @@
-package com.polytech.polyNet;
+package com.polytech.polyNet.config;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import com.polytech.polyNet.business.FeedService;
